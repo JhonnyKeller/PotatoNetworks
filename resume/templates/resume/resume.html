@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- ======= Resume Section ======= -->
+{% for sumary in sumary %}
+
+  <section id="resume" class="resume mt-5">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Resume</h2>
+        <p>{{sumary.text}}</p>
+      </div>
+
+      <div class="row">
+          <div class="col-lg-6">
+          <h3 class="resume-title">Sumary</h3>
+          <div class="resume-item pb-0">
+            <h4>{{sumary.title}}</h4>
+            <p>
+            <ul>
+              {% if sumary.email %}<li>Email: {{sumary.email}}</li>{% endif %}
+              {% if sumary.website %}<li>Website: {{sumary.website}}</li>{% endif %}
+              {% if sumary.phone_number %}<li>Phone number: {{sumary.phone_number}}</li>{% endif %}
+              {% if sumary.website %}<li>Website: {{sumary.website}}</li>{% endif %}
+            </ul>
+            </p>
+          </div>
+          <h3 class="resume-title">Education</h3>
+          {% for x in education %}
+          <div class="resume-item">
+            <h4>{{x.title}}</h4>
+            <h5>{{x.daterange}}</h5>
+            <p><em>{{x.subtitle}}</em></p>
+            <p>{{x.text}}</p>
+          </div>
+          {% endfor %}
+          </div>
+        <div class="col-lg-6">
+          <h3 class="resume-title">Professional Experience</h3>
+          {% for y in professionalexperience %}
+          <div class="resume-item">
+            <h4>{{y.title}}</h4>
+            <h5>{{y.daterange}}</h5>
+            <p><em>{{y.subtitle}}</em></p>
+            <p>
+            <ul>
+              <li>{{y.text}}</li>
+            </ul>
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+
+    </div>
+  </section><!-- End Resume Section -->
+
+  {% endfor %}
+
+{% endblock %}
