@@ -12,9 +12,14 @@ class NavBar(models.Model):
         return self.color
 
 class Hero(models.Model):
+    carousel_active = [
+    ('active','active'),
+    ('','not active'),
+    ]
     service = models.ForeignKey(ServicesPages,related_name='home_button',on_delete=models.CASCADE,null=True,blank=True)
     hone = models.CharField(max_length=254, unique=True)
     htwo = models.TextField(default='0')
+    caurosel = models.CharField(choices=carousel_active,max_length=254,default=carousel_active[1][1],blank=True)
     img = models.ImageField(upload_to='carousel_img', blank=True)
 
     def __str__(self):

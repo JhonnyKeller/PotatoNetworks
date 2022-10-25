@@ -34,9 +34,26 @@
     ======================================================== -->
   </head>
   <body>
+
+    <!-- ======= Top Bar ======= -->
+
+    <section id="topbar" class="d-flex align-items-center">
+      <div class="container d-flex justify-content-center justify-content-md-between">
+        <div class="contact-info d-flex align-items-center">
+          <i class="bi bi-envelope d-flex align-items-center"><a href="#">Jhonnykellerdev@gmail.com</a></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4"><span>+351 915468551</span></i>
+        </div>
+        <div class="social-links d-none d-md-flex align-items-center">
+          <!-- <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a> -->
+          <a href="https://www.linkedin.com/in/jhonny-caldeira-54455423a/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+        </div>
+      </div>
+    </section>
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top">
-      <div class="container-fluid d-flex justify-content-between align-items-center">
+    <header id="header" class="d-flex align-items-center">
+      <div class="container-fluid d-flex justify-content-between">
         {% for nav in navbar %}
         {% if nav.title %}
         <h1 class="logo me-auto me-lg-0"><a href="index.html">{{nav.title}}</a></h1>
@@ -48,52 +65,41 @@
           {% endif %}
           {% endfor %}
         <!-- </div> -->
-        <nav id="navbar" class="navbar">
+        <nav id="navbar" class="navbar me-5">
           <ul>
-            <li><a class="active" href="{% url 'main:index' %}">Home</a></li>
-            <li><a href="{% url 'main:about' %}">About</a></li>
-            <li><a href="{% url 'resume:resume_view' %}">Resume</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'main:index' %}">Home</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'main:about' %}">About</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'resume:resume_view' %}">Resume</a></li>
+
 
             <!-- Services -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Services
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
                 {% for service in servicespages_global %}
                 {% if not service.hidden %}
-                <li>
-                  <form action="{% url 'services:services_view' %}" method="post">
+                  <li>
+                    <form action="{% url 'services:services_view' %}" method="post">
                     {% csrf_token %}
-                    <button type="submit" name="service_name" value="{{service.title}}" class="dropdown-item" style="color:grey;">{{service.title}}</button>
-                  </form>
-                </li>
-                {% endif %}
+                      <div class="d-grid gap-2">
+                        <button class="navlinkbutton" type="submit" name="service_name" value="{{service.title}}">{{service.title}}</button>
+                      </div>
+                    </form>
+                  </li>
+                  {% endif %}
                 {% endfor %}
               </ul>
             </li>
           <!-- end of services -->
 
-            <li><a href="{% url 'portfolio:portfolio_view' %}">Portfolio</a></li>
-            <li><a href="{% url 'contact:contact_view' %}">Contact</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'portfolio:portfolio_view' %}">Portfolio</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'contact:contact_view' %}">Contact</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
-
-        <div class="header-social-links">
-          <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-        </div>
-
       </div>
 
     </header><!-- End Header -->
 
-    <div class="mt-2">
-      <p>0</p>
-    </div>
     {% block content %}
 
 

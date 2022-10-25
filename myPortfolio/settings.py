@@ -25,12 +25,15 @@ STATIC_DIR = BASE_DIR / 'static'
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
+# SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
+SECRET_KEY = 'django-insecure-1dg3$ukiazr+#&u=#d0g%770v&y0v41ji+o)&6p@!(qt!e8qt&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG","False") == "True"
+# DEBUG = os.getenv("DEBUG","False") == "True"
+DEBUG = "True"
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 
 
@@ -100,13 +103,22 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default' : {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'potatodata',
+        'USER': 'postgres',
+        'PASSWORD': '965846May',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

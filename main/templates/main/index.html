@@ -1,20 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<script type="text/javascript">
+  /**
+   * Hero carousel indicators
+   */
+  let heroCarouselIndicators = select("#hero-carousel-indicators")
+  let heroCarouselItems = select('#heroCarousel .carousel-item', true)
 
+  heroCarouselItems.forEach((item, index) => {
+    (index === 0) ?
+    heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>":
+      heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
+  });
+</script>
 <!-- ======= Hero Section ======= -->
-<section id="hero">
-  <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+<section id="hero" class="">
+  <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade pt-3" data-bs-ride="carousel">
 
-    <div class="carousel-inner" role="listbox">
+    <div class="carousel-inner"  role="listbox">
 
       <!-- Slide 1 -->
       {% for heroes in hero %}
-      <div class="carousel-item active" style="background-image: url({{heroes.img.url}});">
+
+      <div class="carousel-item {{heroes.caurosel}}" style="background-image: url({{heroes.img.url}});">
+
         <div class="carousel-container">
-          {% for nav in navbar %}
-          <div style="border-color:{{navbar.color}};" class="carousel-content animate__animated animate__fadeInUp">
-            {% endfor %}
+          <div class="carousel-content" >
             <h2>{{heroes.hone}}</h2>
             <p>
               {{heroes.htwo|linebreaks}}
@@ -25,23 +37,23 @@
                 <button name="service_name" value="{{heroes.service}}" class="btn-get-started">{{heroes.service}}</button>
               </form>
             </div>
-
           </div>
         </div>
       </div>
+      </div>
       {% endfor %}
+
+
     </div>
 
     <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-    </a>
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
 
-    <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-      <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-    </a>
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
 
-    <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
-  </div>
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 </section><!-- End Hero -->
 {% endblock %}

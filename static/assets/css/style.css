@@ -42,6 +42,50 @@ h6 {
     margin-top: 30px;
   }
 }
+/*--------------------------------------------------------------
+# Top Bar
+--------------------------------------------------------------*/
+#topbar {
+  background: #144074;
+  height: 30px;
+  font-size: 14px;
+  transition: all 0.5s;
+  color: #fff;
+  padding: 0;
+}
+
+#topbar .contact-info i {
+  font-style: normal;
+  color: #fff;
+}
+
+#topbar .contact-info i a,
+#topbar .contact-info i span {
+  padding-left: 5px;
+  color: #fff;
+}
+
+#topbar .contact-info i a {
+  line-height: 0;
+  transition: 0.3s;
+  transition: 0.3s;
+}
+
+#topbar .contact-info i a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+#topbar .social-links a {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 0;
+  transition: 0.3s;
+  margin-left: 20px;
+}
+
+#topbar .social-links a:hover {
+  color: white;
+}
 
 /*--------------------------------------------------------------
 # Preloader
@@ -127,7 +171,52 @@ h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+
+
 #header {
+  background: #fff;
+  transition: all 0.5s;
+  z-index: 997;
+  height: 90px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+#header.fixed-top {
+  height: 80px;
+}
+
+#header .logo {
+  font-size: 50px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  font-family: "Poppins", sans-serif;
+}
+
+#header .logo a {
+  color: #222222;
+}
+
+#header .logo a span {
+  color: #106eea;
+}
+
+#header .logo img {
+ height: 500px;
+ width: 1100px;
+}
+
+.scrolled-offset {
+  margin-top: 70px;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+/* #header {
   background: #e9e8e6;
   box-shadow: 0px 0px 25px 0 rgba(0, 0, 0, 0.08);
   z-index: 997;
@@ -156,7 +245,7 @@ h6 {
   #header .logo {
     font-size: 28px;
   }
-}
+} */
 
 /*--------------------------------------------------------------
 # Header Social Links
@@ -178,6 +267,22 @@ h6 {
   color: #34b7a7;
 }
 
+.navlinkbutton{
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 6px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.navlinkbutton:hover{
+  color: #4a84e0;
+}
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -186,6 +291,7 @@ h6 {
 */
 .navbar {
   padding: 0;
+
 }
 
 .navbar ul {
@@ -426,6 +532,7 @@ h6 {
   display: block;
 }
 
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -439,6 +546,11 @@ h6 {
   overflow: hidden;
   position: relative;
 }
+
+#hero.hero-margin-top {
+  margin-top: 80px;
+}
+
 
 #hero .carousel, #hero .carousel-inner, #hero .carousel-item, #hero .carousel-item::before {
   background-size: cover;
@@ -849,6 +961,15 @@ section {
 .testimonials .swiper-pagination .swiper-pagination-bullet-active {
   background-color: #34b7a7;
 }
+
+/*--------------------------------------------------------------
+# debug
+--------------------------------------------------------------*/
+.portfolio_container {
+  height: 900px;
+}
+
+
 
 /*--------------------------------------------------------------
 # Resume
