@@ -119,7 +119,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'portfoliodb',
             'USER': 'mia',
-            'PASSWORD': str(os.getenv('DBONDATAPASSs')),
+            'PASSWORD': str(os.getenv('DBONDATAPASS')),
             'HOST': 'localhost',
             'PORT': '',
         }
