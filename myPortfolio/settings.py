@@ -24,7 +24,7 @@ STATIC_DIR = BASE_DIR / 'static'
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+SECRET_KEY = str(os.getenv('DJANGO_SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.getenv("DEBUG","False") == "True"
@@ -32,7 +32,7 @@ DEBUG =  str(os.getenv('DEBUG') == "1") # 1 == "True"
 
 ALLOWED_HOSTS = []
 if not DEBUG:
-    ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
+    ALLOWED_HOSTS = [str(os.getenv('ALLOWED_HOSTS'))]
 # ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 
@@ -92,9 +92,9 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']
 
-RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
-RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
-SILENCED_SYSTEM_CHECKS = os.getenv('SILENCED_SYSTEM_CHECKS')
+RECAPTCHA_PUBLIC_KEY = str(os.getenv('RECAPTCHA_PUBLIC_KEY'))
+RECAPTCHA_PRIVATE_KEY = str(os.getenv('RECAPTCHA_PRIVATE_KEY'))
+SILENCED_SYSTEM_CHECKS = str(os.getenv('SILENCED_SYSTEM_CHECKS'))
 
 WSGI_APPLICATION = 'myPortfolio.wsgi.application'
 
@@ -115,7 +115,7 @@ if DEBUG:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'potatodata',
             'USER': 'postgres',
-            'PASSWORD': os.getenv('DBOFDATAPASS'),
+            'PASSWORD': str(os.getenv('DBOFDATAPASS')),
             'HOST': 'localhost',
             'PORT': '5432',
         }
@@ -126,7 +126,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'portfoliodb',
             'USER': 'mia',
-            'PASSWORD': os.getenv('DBONDATAPASS'),
+            'PASSWORD': str(os.getenv('DBONDATAPASS')),
             'HOST': 'localhost',
             'PORT': '',
         }
