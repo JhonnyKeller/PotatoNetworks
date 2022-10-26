@@ -171,9 +171,7 @@ USE_TZ = True
 
 
 
-STATICFILES_DIRS = [
-    STATIC_DIR,
-]
+
 
 # MEDIA_DIR
 
@@ -201,6 +199,9 @@ PASSWORD_RESET_TIMEOUT = 14400
 if DEBUG:
     STATIC_URL = 'static/'
     MEDIA_ROOT = MEDIA_DIR
+    STATICFILES_DIRS = [
+        STATIC_DIR,
+    ]
 else:
     STATIC_URL = '/static/'
     MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
