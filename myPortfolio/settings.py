@@ -100,15 +100,8 @@ WSGI_APPLICATION = 'myPortfolio.wsgi.application'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+                   # Databases
 if DEBUG:
     DATABASES = {
         'default' : {
@@ -126,7 +119,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'portfoliodb',
             'USER': 'mia',
-            'PASSWORD': str(os.getenv('DBONDATAPASS')),
+            'PASSWORD': str(os.getenv('DBONDATAPASSs')),
             'HOST': 'localhost',
             'PORT': '',
         }
@@ -169,9 +162,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
-
-
 
 
 # MEDIA_DIR
