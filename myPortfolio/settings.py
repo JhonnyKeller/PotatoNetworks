@@ -123,7 +123,7 @@ else:
     DATABASES = {
         'default' : {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'potatodata',
+            'NAME': 'portfoliodb',
             'USER': 'mia',
             'PASSWORD': '965846May',
             'HOST': 'localhost',
@@ -176,7 +176,7 @@ STATICFILES_DIRS = [
 ]
 
 # MEDIA_DIR
-MEDIA_ROOT = MEDIA_DIR
+
 MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'home'
@@ -200,8 +200,10 @@ PASSWORD_RESET_TIMEOUT = 14400
 
 if DEBUG:
     STATIC_URL = 'static/'
+    MEDIA_ROOT = MEDIA_DIR
 else:
     STATIC_URL = '/static/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
     STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 
