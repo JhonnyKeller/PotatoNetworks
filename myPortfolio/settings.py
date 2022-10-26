@@ -25,11 +25,11 @@ STATIC_DIR = BASE_DIR / 'static'
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('DJANGO_SECRET_KEY')
+SECRET_KEY = str(config('DJANGO_SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False #str(config('DEBUG') == "1") # 1 == "True"
+DEBUG = str(config('DEBUG')) == "1" # 1 == "True"
 
 ALLOWED_HOSTS = []
 if not DEBUG:
