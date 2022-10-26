@@ -31,9 +31,8 @@ SECRET_KEY = str(config('DJANGO_SECRET_KEY'))
 
 DEBUG = str(config('DEBUG')) == "1" # 1 == "True"
 
-ALLOWED_HOSTS = []
-if not DEBUG:
-    ALLOWED_HOSTS = [str(os.getenv('ALLOWED_HOSTS'))]
+
+ALLOWED_HOSTS = [str(os.getenv('ALLOWED_HOSTS')), 'localhost']
 # ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 
