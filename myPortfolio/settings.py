@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -199,15 +198,15 @@ PASSWORD_RESET_TIMEOUT = 14400
 
 
 if DEBUG:
-    STATIC_URL = 'static/'
+    STATIC_URL = '/static/'
     MEDIA_ROOT = MEDIA_DIR
     STATICFILES_DIRS = [
         STATIC_DIR,
     ]
 else:
-    STATIC_URL = 'static/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
-    STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+    STATIC_URL = '/static/'
+    MEDIA_ROOT = os.path.join(MEDIA_DIR)
+    STATIC_ROOT = os.path.join(STATIC_DIR)
 
 
 # Default primary key field type
