@@ -24,11 +24,11 @@ STATIC_DIR = BASE_DIR / 'static'
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =  'django-insecure-1dg3$ukiazr+#&u=#d0g%770v&y0v41ji+o)&6p@!(qt!e8qt&' #str(os.getenv('DJANGO_SECRET_KEY'))
+SECRET_KEY = str(os.getenv('DJANGO_SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.getenv("DEBUG","False") == "True"
-DEBUG =  True # str(os.getenv('DEBUG') == "1") # 1 == "True"
+
+DEBUG = str(os.getenv('DEBUG') == "1") # 1 == "True"
 
 ALLOWED_HOSTS = []
 if not DEBUG:
@@ -109,28 +109,28 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-# if DEBUG:
-#     DATABASES = {
-#         'default' : {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME': 'potatodata',
-#             'USER': 'postgres',
-#             'PASSWORD': str(os.getenv('DBOFDATAPASS')),
-#             'HOST': 'localhost',
-#             'PORT': '5432',
-#         }
-#     }
-# else:
-DATABASES = {
-    'default' : {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'portfoliodb',
-        'USER': 'mia',
-        'PASSWORD': str(os.getenv('DBONDATAPASS')),
-        'HOST': 'localhost',
-        'PORT': '',
+if DEBUG:
+    DATABASES = {
+        'default' : {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'potatodata',
+            'USER': 'postgres',
+            'PASSWORD': str(os.getenv('DBOFDATAPASS')),
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default' : {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'portfoliodb',
+            'USER': 'mia',
+            'PASSWORD': str(os.getenv('DBONDATAPASS')),
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
