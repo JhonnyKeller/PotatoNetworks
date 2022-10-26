@@ -93,9 +93,9 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']
 
-RECAPTCHA_PUBLIC_KEY = str(os.getenv('RECAPTCHA_PUBLIC_KEY'))
-RECAPTCHA_PRIVATE_KEY = str(os.getenv('RECAPTCHA_PRIVATE_KEY'))
-SILENCED_SYSTEM_CHECKS = str(os.getenv('SILENCED_SYSTEM_CHECKS'))
+RECAPTCHA_PUBLIC_KEY = str(config('RECAPTCHA_PUBLIC_KEY'))
+RECAPTCHA_PRIVATE_KEY = str(config('RECAPTCHA_PRIVATE_KEY'))
+SILENCED_SYSTEM_CHECKS = str(config('SILENCED_SYSTEM_CHECKS'))
 
 WSGI_APPLICATION = 'myPortfolio.wsgi.application'
 
@@ -109,7 +109,7 @@ if DEBUG:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'potatodata',
             'USER': 'postgres',
-            'PASSWORD': str(os.getenv('DBOFDATAPASS')),
+            'PASSWORD': str(config('DBOFDATAPASS')),
             'HOST': 'localhost',
             'PORT': '5432',
         }
@@ -120,7 +120,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'portfoliodb',
             'USER': 'mia',
-            'PASSWORD': str(os.getenv('DBONDATAPASS')),
+            'PASSWORD': str(config('DBONDATAPASS')),
             'HOST': 'localhost',
             'PORT': '',
         }
@@ -196,8 +196,8 @@ if DEBUG:
     ]
 else:
     STATIC_URL = '/static/'
-    MEDIA_ROOT = os.path.join(BASE_DIR , 'media/')
-    STATIC_ROOT = os.path.join(BASE_DIR , 'static/')
+    MEDIA_ROOT = os.path.join(BASE_DIR , '/media/')
+    STATIC_ROOT = os.path.join(BASE_DIR , '/static/')
 
 
 # Default primary key field type
