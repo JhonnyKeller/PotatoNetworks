@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from django.core.management.utils import get_random_secret_key
 import os
+from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,13 +25,15 @@ STATIC_DIR = BASE_DIR / 'static'
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.getenv("DEBUG","False") == "True"
-DEBUG = False
+DEBUG =  str(os.getenv('DEBUG') == "1") # 1 == "True"
 
-ALLOWED_HOSTS = ['167.99.3.153']
+ALLOWED_HOSTS = []
+if not DEBUG:
+    ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
 # ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 
@@ -91,9 +93,9 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']
 
-RECAPTCHA_PUBLIC_KEY = '6LddA3kgAAAAAPf1mAJmEc7Ku0cssbD5QMha09NT'
-RECAPTCHA_PRIVATE_KEY = '6LddA3kgAAAAAJY-2-Q0J3QX83DFJwFR1hXqmN8q'
-SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
+SILENCED_SYSTEM_CHECKS = os.getenv('SILENCED_SYSTEM_CHECKS')
 
 WSGI_APPLICATION = 'myPortfolio.wsgi.application'
 
@@ -114,7 +116,7 @@ if DEBUG:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'potatodata',
             'USER': 'postgres',
-            'PASSWORD': '965846May',
+            'PASSWORD': os.getenv('DBOFDATAPASS'),
             'HOST': 'localhost',
             'PORT': '5432',
         }
@@ -125,7 +127,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'portfoliodb',
             'USER': 'mia',
-            'PASSWORD': '965846May',
+            'PASSWORD': os.getenv('DBONDATAPASS'),
             'HOST': 'localhost',
             'PORT': '',
         }
@@ -186,7 +188,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'jhonnykellerdev@gmail.com'
-EMAIL_HOST_PASSWORD = 'urzkunhlmsmiiiyy'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
 
