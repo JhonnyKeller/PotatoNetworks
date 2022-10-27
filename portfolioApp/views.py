@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import Portfolio,PortfolioCard
 
-app_name = 'portfolio'
 
 # Create your views here.
 def Portfolio_view(request):

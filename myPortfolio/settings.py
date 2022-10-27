@@ -32,7 +32,7 @@ SECRET_KEY = str(config('DJANGO_SECRET_KEY'))
 DEBUG = str(config('DEBUG')) == "1" # 1 == "True"
 
 
-ALLOWED_HOSTS = [str(config('ALLOWED_HOSTS')),]
+ALLOWED_HOSTS = [str(config('ALLOWED_HOSTS')),'127.0.0.1']
 # ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'resume',
     'main',
     'services',
-    'Portfolio',
+    'portfolioApp',
     'contact',
     'captcha',
     'colorfield',
@@ -102,28 +102,28 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
                    # Databases
-# if DEBUG:
-#     DATABASES = {
-#         'default' : {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME': 'potatodata',
-#             'USER': 'postgres',
-#             'PASSWORD': str(config('DBOFDATAPASS')),
-#             'HOST': 'localhost',
-#             'PORT': '5432',
-#         }
-#     }
-# else:
-DATABASES = {
-    'default' : {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'portfoliodb',
-        'USER': 'mia',
-        'PASSWORD': str(config('DBONDATAPASS')),
-        'HOST': 'localhost',
-        'PORT': '',
+if DEBUG:
+    DATABASES = {
+        'default' : {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'potatodata',
+            'USER': 'postgres',
+            'PASSWORD': str(config('DBOFDATAPASS')),
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default' : {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'portfoliodb',
+            'USER': 'mia',
+            'PASSWORD': str(config('DBONDATAPASS')),
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
