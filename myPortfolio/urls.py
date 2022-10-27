@@ -25,7 +25,7 @@ urlpatterns = [
     path('privacy_policy',views.PrivacyPolicy.as_view(),name='privacy_policy'),
     path('users/', include('users.urls')),
     path('', include('main.urls')),
-    path('portfolio/', include('Portfolio.urls')),
+    path('portfolio/', include('portfolioAppTwo.urls')),
     path('resume/', include('resume.urls')),
     path('services/', include('services.urls')),
     path('contact/', include('contact.urls')),
