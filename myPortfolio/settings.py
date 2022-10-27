@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'resume',
     'main',
     'services',
-    'portfolioApp',
+    'Portfolio',
     'contact',
     'captcha',
     'colorfield',
