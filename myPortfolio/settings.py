@@ -32,7 +32,7 @@ SECRET_KEY = str(config('DJANGO_SECRET_KEY'))
 DEBUG = str(config('DEBUG')) == "1" # 1 == "True"
 
 
-ALLOWED_HOSTS = [str(config('ALLOWED_HOSTS')),'127.0.0.1',]
+ALLOWED_HOSTS = [str(config('ALLOWED_HOSTS')),'www.potatonetworks.com','potatonetworks.com','127.0.0.1',]
 
 
 
