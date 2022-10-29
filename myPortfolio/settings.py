@@ -102,28 +102,28 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
                    # Databases
-# if DEBUG:
-#     DATABASES = {
-#         'default' : {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME': 'potatodata',
-#             'USER': 'postgres',
-#             'PASSWORD': str(config('DBOFDATAPASS')),
-#             'HOST': 'localhost',
-#             'PORT': '5432',
-#         }
-#     }
-# else:
-DATABASES = {
-    'default' : {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'portfoliodb',
-        'USER': 'mia',
-        'PASSWORD': str(config('DBONDATAPASS')),
-        'HOST': 'localhost',
-        'PORT': '',
+if DEBUG:
+    DATABASES = {
+        'default' : {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'potatodata',
+            'USER': 'postgres',
+            'PASSWORD': str(config('DBOFDATAPASS')),
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default' : {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'portfoliodb',
+            'USER': 'mia',
+            'PASSWORD': str(config('DBONDATAPASS')),
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -174,7 +174,7 @@ LOGOUT_REDIRECT_URL = 'home'
 #Email Section
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'jhonnykellerdev@gmail.com'
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')

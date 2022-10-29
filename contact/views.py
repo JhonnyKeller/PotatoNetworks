@@ -13,7 +13,7 @@ def Contact_view(request):
     get_email = 'no'
 
     if request.method == "POST":
-        form = ContactForm(request.POST)
+        form = ContactForm(request.POST, request.FILES)
         get_email = request.POST.get('email','null')
         get_message = request.POST.get('text','no text')
         date = request.POST.get('date', 'null')
@@ -26,7 +26,7 @@ def Contact_view(request):
                 + "https://whereby.com/potatonetworks?utm_source=onboarding&utm_content=link")
         title = service_pack + " " + date
         if form.is_valid():
-            contact = form.save(commit=False)
+            contact = form.save(commit=False,)
             contact.save()
             send_mail(title,
             reply,
