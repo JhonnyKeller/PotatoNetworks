@@ -61,7 +61,7 @@
         <!-- <div class="container-fluid"> -->
           {% if nav.img %}
           <!-- Uncomment below if you prefer to use an image logo -->
-          <a href="#" class=" ms-4 navbar-brand d-flex"> <img alt="" width="200" height="80" src="{{ nav.img.url }}"></a>
+          <a href="{% url 'main:index' %}" class=" ms-4 navbar-brand d-flex"> <img alt="" width="200" height="80" src="{{ nav.img.url }}"></a>
           {% endif %}
           {% endfor %}
         <!-- </div> -->

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container portfolio_container" data-aos="fade-up">
+<div class="container" data-aos="fade-up">
   <div class="row">
     <div class="col-12 text-center mt-5 border-bottom section-title">
       {% for x in portfolio %}
@@ -9,18 +9,20 @@
       <p>{{x.text}}</p>
       {% endfor %}
     </div>
-    <div class="col-12  mt-3 mb-3">
+    <div class="col-12 justify-content-center  mt-3 mb-3">
       <div class="row justify-content-center">
         {% for y in portfoliocard %}
-        <div class="col-10 col-md-6 col-lg-4 justify-content-center">
-          <div class="card" style="width: 32rem;">
-            <img class="card-img-top" src="{{y.img.url}}" alt="Card image cap">
+        <div class="col-12 col-md-6 mb-3  justify-content-center">
+	<div class='container-fluid'>
+          <div class="card">
+            <img class="card-img-top class="img-fluid" alt="Responsive image" src="{{y.img.url}}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">{{y.title}}</h5>
               <p class="card-text">Lançado: {{y.created_at}}</p>
               <p class="card-text" >Website status: {{y.status}}</p>
               <a href="{{y.url_to_website}}" target="_blank" class="btn btn-primary">Go to Page</a>
             </div>
+	    </div>
           </div>
         </div>
         {% endfor %}
